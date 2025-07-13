@@ -347,6 +347,10 @@ class LightsExtension {
     try {
       let content;
       switch (colorMode) {
+        case 'default':
+          // Don't show modal for default hover state
+          this.hideModal();
+          return;
         case 'green':
           content = await this.getDefinition(searchTerm);
           break;
