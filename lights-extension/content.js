@@ -254,8 +254,17 @@ class LightsExtension {
   handleWordClick(e) {
     if (!this.currentSelection) return;
     
-    // Cycle through colors
-    this.currentColorIndex = (this.currentColorIndex + 1) % this.colorModes.length;
+    // Only cycle through colors if we're not in default mode
+    // On first click, go from default to green, then cycle through the rest
+    if (this.currentColorIndex === 0) {
+      this.currentColorIndex = 1; // Go from default to green
+    } else {
+      this.currentColorIndex = (this.currentColorIndex + 1) % this.colorModes.length;
+      // Skip default mode when cycling (only use it for hover)
+      if (this.currentColorIndex === 0) {
+        this.currentColorIndex = 1;
+      }
+    }
     
     // Update highlight colors
     const highlights = document.querySelectorAll('.lights-highlight');
@@ -268,8 +277,10 @@ class LightsExtension {
       highlight.classList.add(`lights-highlight-${this.colorModes[this.currentColorIndex]}`);
     });
     
-    // Show modal with information
-    this.showModal(e.clientX, e.clientY);
+    // Show modal with information (only show modal for non-default colors)
+    if (this.currentColorIndex > 0) {
+      this.showModal(e.clientX, e.clientY);
+    }
   }
 
   showModal(x, y) {
