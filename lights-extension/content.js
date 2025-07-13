@@ -3,8 +3,8 @@ class LightsExtension {
   constructor() {
     this.currentHighlights = [];
     this.currentSelection = null;
-    this.colorModes = ['green', 'blue', 'red', 'yellow', 'purple'];
-    this.currentColorIndex = 0;
+    this.colorModes = ['default', 'green', 'blue', 'red', 'yellow', 'purple'];
+    this.currentColorIndex = 0; // Start with 'default' (bright cream white)
     this.modal = null;
     this.isActive = true;
     this.debounceTimer = null;
