@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lights Extension</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="popup-header">
+      <h2>Lights Extension</h2>
+      <div class="status-indicator" id="statusIndicator"></div>
+    </div>
+    
+    <div class="popup-content">
+      <div class="feature-toggle">
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleExtension" checked>
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Enable word highlighting</span>
+      </div>
+      
+      <div class="color-modes">
+        <h3>Color Modes</h3>
+        <div class="color-mode-list">
+          <div class="color-mode-item">
+            <div class="color-indicator green"></div>
+            <span>Green - Definitions</span>
+          </div>
+          <div class="color-mode-item">
+            <div class="color-indicator blue"></div>
+            <span>Blue - Synonyms</span>
+          </div>
+          <div class="color-mode-item">
+            <div class="color-indicator red"></div>
+            <span>Red - Stories & Facts</span>
+          </div>
+          <div class="color-mode-item">
+            <div class="color-indicator yellow"></div>
+            <span>Yellow - Etymology</span>
+          </div>
+          <div class="color-mode-item">
+            <div class="color-indicator purple"></div>
+            <span>Purple - Examples</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="instructions">
+        <h3>How to use</h3>
+        <ol>
+          <li>Hover over any word on a webpage</li>
+          <li>Move mouse up/down to highlight more words</li>
+          <li>Click to cycle through color modes</li>
+          <li>View information in the popup window</li>
+        </ol>
+      </div>
+      
+      <div class="settings">
+        <h3>Settings</h3>
+        <div class="setting-item">
+          <label>
+            <input type="checkbox" id="enableShortcuts" checked>
+            Keyboard shortcuts (Esc to close)
+          </label>
+        </div>
+        <div class="setting-item">
+          <label>
+            <input type="checkbox" id="showTooltips" checked>
+            Show tooltips
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="popup-footer">
+      <button id="resetSettings" class="btn-secondary">Reset Settings</button>
+      <button id="saveSettings" class="btn-primary">Save</button>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
