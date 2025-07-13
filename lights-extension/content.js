@@ -478,7 +478,7 @@ class LightsExtension {
 
   async loadSettings() {
     // Load user preferences from storage
-    if (typeof chrome !== 'undefined' && chrome.storage) {
+    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
       try {
         const result = await chrome.storage.sync.get(['lightsEnabled', 'colorMode']);
         this.isActive = result.lightsEnabled !== false;
@@ -490,7 +490,7 @@ class LightsExtension {
   }
 
   async saveSettings() {
-    if (typeof chrome !== 'undefined' && chrome.storage) {
+    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
       try {
         await chrome.storage.sync.set({
           lightsEnabled: this.isActive,
