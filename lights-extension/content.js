@@ -218,7 +218,8 @@ class LightsExtension {
       
       // Add word with or without highlight
       if (i >= startIndex && i <= startIndex + wordsToHighlight.length - 1) {
-        const colorClass = `lights-highlight-${this.colorModes[this.currentColorIndex]}`;
+        // Always start with default (bright cream white) color on hover
+        const colorClass = `lights-highlight-${this.colorModes[0]}`; // Always use 'default' for hover
         newHTML += `<span class="lights-highlight ${colorClass}">${word}</span>`;
         this.currentHighlights.push(word);
       } else {
@@ -238,6 +239,9 @@ class LightsExtension {
     
     // Store reference for cleanup
     wrapper.setAttribute('data-lights-wrapper', 'true');
+    
+    // Reset color index to default for new selections
+    this.currentColorIndex = 0;
   }
 
   clearHighlights() {
