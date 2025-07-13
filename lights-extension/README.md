@@ -33,11 +33,12 @@ A smart word highlighting browser extension that provides contextual information
 
 ## Usage
 
-1. **Hover**: Move your mouse over any word on a webpage
+1. **Hover**: Move your mouse over any word on a webpage (highlights in cream white)
 2. **Adjust Selection**: Move mouse up to highlight more words, down to highlight fewer
-3. **Get Information**: Click on highlighted words to see information
-4. **Cycle Colors**: Keep clicking to cycle through different information types
-5. **Close**: Press Escape or click outside to close the information popup
+3. **Activate**: Click once on highlighted words to enter color cycling mode
+4. **Get Information**: Click again to cycle through different information types
+5. **Navigate**: Each color shows different information in the popup
+6. **Close**: Press Escape to return to hover mode
 
 ## Technical Details
 
