@@ -3,8 +3,8 @@ class LightsExtension {
   constructor() {
     this.currentHighlights = [];
     this.currentSelection = null;
-    this.colorModes = ['green', 'blue', 'red', 'yellow', 'purple'];
-    this.currentColorIndex = 0;
+    this.colorModes = ['default', 'green', 'blue', 'red', 'yellow', 'purple'];
+    this.currentColorIndex = 0; // Start with 'default' (bright cream white)
     this.modal = null;
     this.isActive = true;
     this.debounceTimer = null;
@@ -126,7 +126,7 @@ class LightsExtension {
     );
 
     let textNode;
-    while (textNode = walker.nextNode()) {
+    while ((textNode = walker.nextNode())) {
       const range = document.createRange();
       range.selectNodeContents(textNode);
       const rect = range.getBoundingClientRect();
@@ -218,7 +218,8 @@ class LightsExtension {
       
       // Add word with or without highlight
       if (i >= startIndex && i <= startIndex + wordsToHighlight.length - 1) {
-        const colorClass = `lights-highlight-${this.colorModes[this.currentColorIndex]}`;
+        // Always start with default (bright cream white) color on hover
+        const colorClass = `lights-highlight-${this.colorModes[0]}`; // Always use 'default' for hover
         newHTML += `<span class="lights-highlight ${colorClass}">${word}</span>`;
         this.currentHighlights.push(word);
       } else {
@@ -238,6 +239,9 @@ class LightsExtension {
     
     // Store reference for cleanup
     wrapper.setAttribute('data-lights-wrapper', 'true');
+    
+    // Reset color index to default for new selections
+    this.currentColorIndex = 0;
   }
 
   clearHighlights() {
@@ -254,8 +258,17 @@ class LightsExtension {
   handleWordClick(e) {
     if (!this.currentSelection) return;
     
-    // Cycle through colors
-    this.currentColorIndex = (this.currentColorIndex + 1) % this.colorModes.length;
+    // Only cycle through colors if we're not in default mode
+    // On first click, go from default to green, then cycle through the rest
+    if (this.currentColorIndex === 0) {
+      this.currentColorIndex = 1; // Go from default to green
+    } else {
+      this.currentColorIndex = (this.currentColorIndex + 1) % this.colorModes.length;
+      // Skip default mode when cycling (only use it for hover)
+      if (this.currentColorIndex === 0) {
+        this.currentColorIndex = 1;
+      }
+    }
     
     // Update highlight colors
     const highlights = document.querySelectorAll('.lights-highlight');
@@ -268,8 +281,10 @@ class LightsExtension {
       highlight.classList.add(`lights-highlight-${this.colorModes[this.currentColorIndex]}`);
     });
     
-    // Show modal with information
-    this.showModal(e.clientX, e.clientY);
+    // Show modal with information (only show modal for non-default colors)
+    if (this.currentColorIndex > 0) {
+      this.showModal(e.clientX, e.clientY);
+    }
   }
 
   showModal(x, y) {
@@ -315,13 +330,14 @@ class LightsExtension {
 
   getColorValue(colorMode) {
     const colors = {
+      default: '#fff8dc',
       green: '#22c55e',
       blue: '#3b82f6',
       red: '#ef4444',
       yellow: '#fbbf24',
       purple: '#a855f7'
     };
-    return colors[colorMode] || '#22c55e';
+    return colors[colorMode] || '#fff8dc';
   }
 
   async loadModalContent(searchTerm, colorMode) {
@@ -331,6 +347,10 @@ class LightsExtension {
     try {
       let content;
       switch (colorMode) {
+        case 'default':
+          // Don't show modal for default hover state
+          this.hideModal();
+          return;
         case 'green':
           content = await this.getDefinition(searchTerm);
           break;
@@ -458,7 +478,7 @@ class LightsExtension {
 
   async loadSettings() {
     // Load user preferences from storage
-    if (typeof chrome !== 'undefined' && chrome.storage) {
+    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
       try {
         const result = await chrome.storage.sync.get(['lightsEnabled', 'colorMode']);
         this.isActive = result.lightsEnabled !== false;
@@ -470,7 +490,7 @@ class LightsExtension {
   }
 
   async saveSettings() {
-    if (typeof chrome !== 'undefined' && chrome.storage) {
+    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
       try {
         await chrome.storage.sync.set({
           lightsEnabled: this.isActive,
@@ -503,7 +523,7 @@ if (document.readyState === 'loading') {
 }
 
 // Listen for messages from popup
-if (typeof chrome !== 'undefined' && chrome.runtime) {
+if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.onMessage) {
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'toggle') {
       lightsExtension.toggle();

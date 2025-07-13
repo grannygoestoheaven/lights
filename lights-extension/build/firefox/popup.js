@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Load and highlight current color mode
   try {
     const { colorMode } = await chrome.storage.sync.get({ colorMode: 0 });
+    // Adjust for new color array (0 = default, 1 = green, etc.)
     document.querySelectorAll('.color-mode-item')[colorMode]?.classList.add('active');
   } catch (error) {
     console.error('Error loading color mode:', error);
