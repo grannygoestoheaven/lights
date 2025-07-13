@@ -4,9 +4,10 @@ A smart word highlighting browser extension that provides contextual information
 
 ## Features
 
-- **Smart Highlighting**: Hover over words to highlight them with intelligent multi-word selection
+- **Smart Highlighting**: Hover over words to highlight them in bright cream white with subtle borders
 - **Vertical Mouse Control**: Move mouse up/down to highlight more or fewer consecutive words
 - **Color-coded Information**: Click to cycle through different types of information:
+  - 🟤 **Cream White**: Hover state (default)
   - 🟢 **Green**: Word definitions
   - 🔵 **Blue**: Synonyms and related words
   - 🔴 **Red**: Interesting stories and facts
