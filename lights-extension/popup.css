@@ -168,6 +168,11 @@ input:checked + .slider::before {
   flex-shrink: 0;
 }
 
+.color-indicator.default {
+  background-color: #fff8dc;
+  border: 1px solid #ddd;
+}
+
 .color-indicator.green {
   background-color: #22c55e;
 }
