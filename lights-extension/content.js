@@ -330,13 +330,14 @@ class LightsExtension {
 
   getColorValue(colorMode) {
     const colors = {
+      default: '#fff8dc',
       green: '#22c55e',
       blue: '#3b82f6',
       red: '#ef4444',
       yellow: '#fbbf24',
       purple: '#a855f7'
     };
-    return colors[colorMode] || '#22c55e';
+    return colors[colorMode] || '#fff8dc';
   }
 
   async loadModalContent(searchTerm, colorMode) {
