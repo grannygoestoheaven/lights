@@ -81,13 +81,27 @@
         <h2>Testing Instructions</h2>
         <ol>
             <li>Install the Lights extension in your browser</li>
-            <li>Hover over any word on this page</li>
+            <li>Hover over any word on this page (should highlight in bright cream white)</li>
             <li>Move your mouse vertically over words to test multi-word highlighting</li>
-            <li>Click on highlighted words to cycle through information types</li>
-            <li>Test the color cycling: Green → Blue → Red → Yellow → Purple</li>
-            <li>Press Escape to close information popups</li>
+            <li>Click once on highlighted words to activate color cycling</li>
+            <li>Click again to cycle through: Green → Blue → Red → Yellow → Purple → Green...</li>
+            <li>Each color shows different information in the popup</li>
+            <li>Press Escape to return to hover mode</li>
             <li>Try the extension popup to toggle settings</li>
         </ol>
+        
+        <div class="highlight-behavior">
+            <h3>Expected Behavior:</h3>
+            <ul>
+                <li><strong>Hover:</strong> Words turn bright cream white with subtle border</li>
+                <li><strong>First Click:</strong> Words turn green, show definitions</li>
+                <li><strong>Second Click:</strong> Words turn blue, show synonyms</li>
+                <li><strong>Third Click:</strong> Words turn red, show stories/facts</li>
+                <li><strong>Fourth Click:</strong> Words turn yellow, show etymology</li>
+                <li><strong>Fifth Click:</strong> Words turn purple, show examples</li>
+                <li><strong>Sixth Click:</strong> Cycle back to green</li>
+            </ul>
+        </div>
     </div>
 
     <div class="test-section">
