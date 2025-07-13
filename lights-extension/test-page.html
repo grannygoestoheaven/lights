@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lights Extension Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .highlight-test {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .word-density {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        .technical-text {
+            font-family: 'Courier New', monospace;
+            background: #f8f8f8;
+            padding: 10px;
+            border-left: 4px solid #007acc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lights Extension Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Basic Word Highlighting Test</h2>
+        <p>This paragraph contains simple words for testing the basic highlighting functionality. Move your mouse over any word to see it highlighted. Try moving your mouse up and down over words to see how multiple words get highlighted.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Complex Sentences</h2>
+        <p class="word-density">The quick brown fox jumps over the lazy dog. This sentence contains every letter of the alphabet and provides excellent testing material for word highlighting algorithms. Notice how punctuation affects word boundaries.</p>
+        
+        <p>Technology revolutionizes communication through innovative applications. Browser extensions enhance user experience by providing contextual information about selected content. Modern web development emphasizes scalability and performance optimization.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Technical Vocabulary</h2>
+        <div class="technical-text">
+            <p>JavaScript developers utilize asynchronous programming patterns to implement efficient event-driven architectures. The extension leverages DOM manipulation techniques for dynamic content highlighting.</p>
+            
+            <p>API integration enables seamless data retrieval from external dictionary services. The manifest configuration specifies permissions and content script injection parameters.</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Different Text Styles</h2>
+        <p><strong>Bold text</strong> should be highlightable just like <em>italic text</em> and <u>underlined text</u>.</p>
+        
+        <p>Numbers like 42, 3.14159, and dates like 2024-03-15 should also be properly handled by the highlighting system.</p>
+        
+        <p>Special characters and punctuation: "Hello, world!" — testing various symbols & characters (including parentheses) [and brackets] {and braces}.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Long Paragraph Test</h2>
+        <p>This is a longer paragraph designed to test the extension's performance with extensive text content. The word highlighting system should maintain smooth performance even when dealing with substantial amounts of text. User interaction should remain responsive regardless of document length. The extension architecture prioritizes efficiency through debounced event handling and optimized DOM manipulation techniques. Performance monitoring ensures that the highlighting functionality doesn't impact overall browsing experience. Modern browsers provide excellent support for real-time text processing and dynamic content modification.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Testing Instructions</h2>
+        <ol>
+            <li>Install the Lights extension in your browser</li>
+            <li>Hover over any word on this page</li>
+            <li>Move your mouse vertically over words to test multi-word highlighting</li>
+            <li>Click on highlighted words to cycle through information types</li>
+            <li>Test the color cycling: Green → Blue → Red → Yellow → Purple</li>
+            <li>Press Escape to close information popups</li>
+            <li>Try the extension popup to toggle settings</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>Common Test Words</h2>
+        <p>These words have rich definitions and synonyms for testing:</p>
+        <ul>
+            <li><strong>illumination</strong> - should have multiple definitions</li>
+            <li><strong>serendipity</strong> - interesting etymology</li>
+            <li><strong>computer</strong> - has historical stories</li>
+            <li><strong>beautiful</strong> - many synonyms available</li>
+            <li><strong>extension</strong> - relevant to the project</li>
+            <li><strong>highlight</strong> - core functionality word</li>
+            <li><strong>magnificent</strong> - good for synonym testing</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Edge Cases</h2>
+        <p>Test these edge cases:</p>
+        <ul>
+            <li>Single-letter words: I, a</li>
+            <li>Contractions: don't, can't, won't</li>
+            <li>Hyphenated words: state-of-the-art, twenty-one</li>
+            <li>Words with apostrophes: it's, you're</li>
+            <li>Abbreviations: HTML, CSS, API</li>
+            <li>Mixed case: CamelCase, PascalCase</li>
+        </ul>
+    </div>
+
+    <script>
+        // Simple script to test extension interaction
+        console.log('Test page loaded - ready for Lights extension testing');
+        
+        // Add some dynamic content for testing
+        setTimeout(() => {
+            const dynamicSection = document.createElement('div');
+            dynamicSection.className = 'test-section';
+            dynamicSection.innerHTML = `
+                <h2>Dynamically Added Content</h2>
+                <p>This content was added dynamically to test if the extension works with content that appears after page load. The highlighting should work on these words as well.</p>
+            `;
+            document.body.appendChild(dynamicSection);
+        }, 2000);
+    </script>
+</body>
+</html>
