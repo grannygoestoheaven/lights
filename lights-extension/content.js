@@ -523,7 +523,7 @@ if (document.readyState === 'loading') {
 }
 
 // Listen for messages from popup
-if (typeof chrome !== 'undefined' && chrome.runtime) {
+if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.onMessage) {
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'toggle') {
       lightsExtension.toggle();
